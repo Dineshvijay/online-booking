@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/services")
-@CrossOrigin({"http://localhost:3000", "http://192.168.101.2:3000"})
+@CrossOrigin({"http://localhost:3000", "http://192.168.101.5:3000"})
 public class SalonServiceDetailController {
 
     private final SalonServiceDetailService salonServiceDetailService;
