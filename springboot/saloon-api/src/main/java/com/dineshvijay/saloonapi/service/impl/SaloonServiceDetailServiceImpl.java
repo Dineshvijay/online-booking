@@ -3,7 +3,10 @@ package com.dineshvijay.saloonapi.service.impl;
 import com.dineshvijay.saloonapi.entity.SalonServiceDetail;
 import com.dineshvijay.saloonapi.repository.SalonServiceDetailRepository;
 import com.dineshvijay.saloonapi.service.SalonServiceDetailService;
+import com.dineshvijay.saloonapi.utils.ResponseWrapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +20,10 @@ public class SaloonServiceDetailServiceImpl implements SalonServiceDetailService
         this.repository = repository;
     }
     @Override
-    public List<SalonServiceDetail> availableServices() {
+    public ResponseEntity<Object> getSalonService() {
         log.info("SaloonServiceDetailServiceImpl called");
-        return repository.findAll();
+        List<SalonServiceDetail> salonServiceDetails = repository.findAll();
+        ResponseWrapper responseWrapper = new ResponseWrapper(salonServiceDetails, 200, "success", HttpStatus.OK);
+        return responseWrapper.wrap();
     }
 }

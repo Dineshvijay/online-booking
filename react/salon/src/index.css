@@ -32,6 +32,18 @@ code {
   font-size: large;
 }
 
+.name {
+  color: black;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.slotTitle {
+  color: black;
+  font-weight: 600;
+  font-size: 18px;
+}
+
 .description {
   color: black;
   font-size: small;
@@ -41,4 +53,23 @@ code {
   color: black;
   font-weight: bold;
   font-size: medium;
+}
+
+.card-container {
+  width: "200%";
+  margin: "auto";
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 0.575rem 2.25rem 0.575rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  appearance: none;
 }

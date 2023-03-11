@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 
-export default function ChooseService(props) {
+export default function SalonServiceCard(props) {
   return (
     <>
       <Card
@@ -16,7 +16,14 @@ export default function ChooseService(props) {
             {props.data.description}
           </Card.Text>
           <Card.Text className="description">{`${props.data.time} mins`}</Card.Text>
-          <Button variant="outline-primary">Book Now</Button>
+          <Button
+            variant="outline-primary"
+            onClick={() => {
+              props.selectedService(props.data);
+            }}
+          >
+            Book Now
+          </Button>
         </Card.Body>
       </Card>
     </>
