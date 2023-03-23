@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SlotRepository extends JpaRepository<Slot, BigInteger> {
-    @Query(value = "SELECT new com.dineshvijay.saloonapi.dto.AvailableSlot(sl.id, sl.slotFor, sl.status, sl.stylistName, sl.confirmedAt, sl.lockedAt, s) FROM SalonServiceDetail s JOIN s.slots sl WHERE s.id = :serviceId AND Date(sl.slotFor) = :date")
+    @Query(value = "SELECT new com.dineshvijay.saloonapi.dto.AvailableSlot(sl.id, sl.slotFor, sl.status, sl.stylistName, sl.confirmedAt, sl.lockedAt, s) FROM SalonServiceDetail s JOIN s.slots sl WHERE s.id = :serviceId AND Date(sl.slotFor) = :date AND sl.status = 0")
     List<AvailableSlot>getAvailableSlotForService(@Param("serviceId") BigInteger serviceId, @Param("date")LocalDateTime date);
 
     @Query(value = "SELECT new com.dineshvijay.saloonapi.dto.AvailableSlot(sl.id, sl.slotFor, sl.status, sl.stylistName, sl.confirmedAt, sl.lockedAt, s) FROM SalonServiceDetail s JOIN s.slots sl WHERE s.id = :serviceId AND sl.id = :slotId")
