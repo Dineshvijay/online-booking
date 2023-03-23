@@ -1,8 +1,6 @@
 package com.dineshvijay.saloonapi.service.impl;
 
-import com.dineshvijay.saloonapi.dto.AvailableSlot;
-import com.dineshvijay.saloonapi.entity.Slot;
-import com.dineshvijay.saloonapi.exception.ApiRequestException;
+import com.dineshvijay.saloonapi.exception.SalonException;
 import com.dineshvijay.saloonapi.repository.SlotRepository;
 import com.dineshvijay.saloonapi.service.SlotService;
 import com.dineshvijay.saloonapi.utils.ResponseWrapper;
@@ -11,14 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.DateFormatter;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
 
 @Service
 @Slf4j
@@ -40,8 +35,13 @@ public class SlotServiceImpl implements SlotService {
             var responseWrapper = new ResponseWrapper(slots, 200, "success", HttpStatus.OK);
             return responseWrapper.wrap();
         } catch (Exception e) {
-            throw new ApiRequestException(e.getMessage(), 999, HttpStatus.BAD_REQUEST);
+            throw new SalonException(e.getMessage(), 999, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @Override
+    public ResponseEntity<Object> updateSlotStatus(int slotId, int status) {
+        return null;
     }
 
 }

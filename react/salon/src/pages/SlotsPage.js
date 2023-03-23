@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
@@ -12,6 +12,7 @@ import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function SlotsPage(props) {
   const params = useParams();
+  const navigate = useNavigate();
   const [msgVariant, setMsgVariant] = useState(null);
   const [msg, setMsg] = useState(null);
   const [availableSlots, setAvailableSlots] = useState(null);
@@ -31,6 +32,7 @@ export default function SlotsPage(props) {
         } else {
           setMsgVariant("primary");
           setMsg("No slots found");
+          setAvailableSlots(null);
         }
       })
       .catch((err) => {
@@ -38,6 +40,10 @@ export default function SlotsPage(props) {
         setMsgVariant("danger");
         setMsg(err.toString());
       });
+  };
+
+  const handleSelectSlot = (slot) => {
+    navigate(`/makepayment/${slot?.salonServiceDetail?.id}/${slot?.id}`);
   };
   return (
     <>
@@ -92,7 +98,11 @@ export default function SlotsPage(props) {
           {availableSlots?.map((item) => {
             return (
               <Col md="auto" style={{ padding: "1rem" }}>
-                <SlotCard data={item} serviceName={params?.serviceName} />
+                <SlotCard
+                  data={item}
+                  serviceName={params?.serviceName}
+                  onSelectSlot={handleSelectSlot}
+                />
               </Col>
             );
           })}

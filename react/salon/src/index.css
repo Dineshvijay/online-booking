@@ -38,6 +38,12 @@ code {
   font-size: 14px;
 }
 
+.title {
+  color: black;
+  font-weight: bold;
+  font-size: 22px;
+}
+
 .slotTitle {
   color: black;
   font-weight: 600;

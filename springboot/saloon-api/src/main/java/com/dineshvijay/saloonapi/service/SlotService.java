@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface SlotService {
      ResponseEntity<Object> getAvailableSlots(int salonServiceId, String formattedDate);
+     ResponseEntity<Object> updateSlotStatus(int slotId, int status);
 }

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 
@@ -16,5 +17,7 @@ public class AvailableSlot {
     private LocalDateTime slotFor;
     private Integer status;
     private String stylistName;
+    private LocalDateTime confirmedAt;
+    private LocalDateTime lockedAt;
     private SalonServiceDetail salonServiceDetail;
 }

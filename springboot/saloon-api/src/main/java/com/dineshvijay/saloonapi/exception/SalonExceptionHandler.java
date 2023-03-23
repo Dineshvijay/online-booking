@@ -9,10 +9,10 @@ import java.util.HashMap;
 
 
 @ControllerAdvice
-public class ApiExceptionHandler {
-    @ExceptionHandler({ApiRequestException.class})
-    public ResponseEntity<Object> handleException(ApiRequestException e) {
-        var apiException = new ApiException(e.getMessage(), e.getCode(), ZonedDateTime.now(ZoneId.of("Z")));
+public class SalonExceptionHandler {
+    @ExceptionHandler({SalonException.class})
+    public ResponseEntity<Object> handleException(SalonException e) {
+        var apiException = new SalonExceptionDTO(e.getMessage(), e.getCode(), ZonedDateTime.now(ZoneId.of("Z")));
         var map = new HashMap<String, Object>();
         map.put("status", apiException);
         map.put("data", null);

@@ -1,12 +1,16 @@
 package com.dineshvijay.saloonapi.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "slot")
 public class Slot {
@@ -22,9 +26,7 @@ public class Slot {
     private Integer status;
     @Column(name="stylist_name")
     private String stylistName;
-    @Column(name="selected_service_id")
-    private BigInteger selectedServiceId;
     @ManyToOne
-    @JoinColumn(name="available_services_id")
+    @JoinColumn(name="selected_service_id")
     private SalonServiceDetail salonServiceDetail;
 }
